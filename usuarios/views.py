@@ -15,7 +15,7 @@ def login(request):
         senha = request.POST['senha']
         if email == "" or senha == "":
             print("Preencha os campos")
-            return redirect('login')
+            return redirect('index')
         print(email, senha)
         if User.objects.filter(email=email).exists():
             nome = User.objects.filter(email=email).values_list('username', flat=True).get()
@@ -23,6 +23,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 print('Login realizado com sucesso')
+                return redirect('index')
                 
         # essa é a primeria linha a ser digitada dentro da função, com o objetivo de renderizar a tela em chamada
     return render(request, 'login.html')
