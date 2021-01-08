@@ -23,7 +23,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 print('Login realizado com sucesso')
-                return redirect('index')
+                return redirect('home')
                 
         # essa é a primeria linha a ser digitada dentro da função, com o objetivo de renderizar a tela em chamada
     return render(request, 'login.html')
@@ -48,3 +48,7 @@ def cadastro(request):
     else:
         # essa é a primeria linha a ser digitada dentro da função, com o objetivo de renderizar a tela em chamada
         return render(request, 'cadastro.html')
+
+
+def home(request):
+    return render(request, 'home.html')
